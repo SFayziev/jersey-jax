@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="jersey-jax:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="jaxrs.war">
+      <element id="artifact" artifact-name="jersey-jax:war exploded" />
+    </root>
+  </artifact>
+</component>
