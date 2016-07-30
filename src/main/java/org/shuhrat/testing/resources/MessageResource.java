@@ -29,12 +29,14 @@ public class MessageResource {
         return messageService.getbyId(id);
     }
 
+
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id}")
     public void delById(@PathParam("id") Long id ) {
         messageService.deletebyId(id);
     }
+
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
