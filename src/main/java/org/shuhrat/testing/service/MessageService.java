@@ -25,6 +25,7 @@ public class MessageService {
         return new ArrayList<>(messageMap.values());
     }
 
+    
     public List<Message> getAllbyYear(int year){
         return messageMap.values().stream().filter(message -> message.getCreate().getYear() == year).collect(Collectors.toList());
     }
