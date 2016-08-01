@@ -15,7 +15,7 @@ public class GenericExceptionMapper implements ExceptionMapper<Throwable> {
     @Override
     public Response toResponse(Throwable throwable) {
         ErrorMessage errorMessage= new ErrorMessage( 500,throwable.getMessage(), "Please check argument");
-        return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(errorMessage). build();
+         return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(errorMessage). build();
 
     }
 }
