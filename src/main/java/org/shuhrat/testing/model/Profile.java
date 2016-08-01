@@ -11,6 +11,7 @@ import java.util.Date;
 public class Profile {
     private int id;
     private String name;
+    private String fullname;
     private Date regDate;
 
     public Profile(){
@@ -18,8 +19,9 @@ public class Profile {
     }
 
 
-    public Profile(int id, String name, Date regDate) {
+    public Profile(int id, String name, String fullname , Date regDate) {
         this.id = id;
+        this.fullname=fullname;
         this.name = name;
         this.regDate = regDate;
     }
@@ -46,5 +48,13 @@ public class Profile {
 
     public void setRegDate(Date regDate) {
         this.regDate = regDate;
+    }
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
     }
 }

@@ -11,27 +11,31 @@ import java.util.List;
  * Created by Admin on 28.07.2016.
  */
 @Path("/messages")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class MessageResource {
     MessageService messageService= new MessageService();
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Message> getIt() {
+    public List<Message> getIt(@QueryParam("year") int year , @QueryParam("start") int start, @QueryParam("recnum") int recnum) {
+        if (year>0){
+            return messageService.getAllbyYear(year);
+        }
+        if (start>=0 && recnum>0){
+            return messageService.getAllbyPagination(start, recnum);
+        }
 
         return messageService.getAll();
     }
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id}")
     public Message getById(@PathParam("id") Long id ) {
-
         return messageService.getbyId(id);
     }
 
 
     @DELETE
-    @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id}")
     public void delById(@PathParam("id") Long id ) {
         messageService.deletebyId(id);
@@ -39,15 +43,12 @@ public class MessageResource {
 
 
     @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
+
     public Message postMessage(Message message){
         return messageService.postMessage(message);
     }
 
     @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id}")
     public Message putMessage(@PathParam("id") Long id  ,Message message){
         message.setId(id);

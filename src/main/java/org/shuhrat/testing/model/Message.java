@@ -2,7 +2,7 @@ package org.shuhrat.testing.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 /**
  * Created by Admin on 28.07.2016.
@@ -12,27 +12,26 @@ public class Message implements Serializable {
     private static final long serialVersionUID = -8039686696076334523L;
 
     private long id;
-    private Date create;
-    private Date updated;
+    private LocalDate create;
+    private LocalDate updated;
     private String author;
     private String text;
 
     public Message(){
 
     }
-    public Message(int id ,  Date create, String author, String text) {
+    public Message(int id , LocalDate create, String author, String text) {
         this.id=id;
-        this.create = create;
+        this.create = LocalDate.now();
         this.author = author;
         this.text = text;
     }
 
-
-    public Date getUpdated() {
-        return updated == null?getCreate(): updated;
+    public LocalDate getUpdated() {
+        return updated;
     }
 
-    public void setUpdated(Date updated) {
+    public void setUpdated(LocalDate updated) {
         this.updated = updated;
     }
 
@@ -44,11 +43,11 @@ public class Message implements Serializable {
         this.id = id;
     }
 
-    public Date getCreate() {
+    public LocalDate getCreate() {
         return create;
     }
 
-    public void setCreate(Date create) {
+    public void setCreate(LocalDate create) {
         this.create = create;
     }
 
