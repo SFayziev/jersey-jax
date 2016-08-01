@@ -5,7 +5,9 @@ import org.shuhrat.testing.model.Message;
 import org.shuhrat.testing.service.MessageService;
 
 import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.*;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 /**
@@ -44,9 +46,11 @@ public class MessageResource {
 
 
     @POST
+    public Response postMessage(Message message, @Context UriInfo uriInfo) throws URISyntaxException {
+        Message message1= messageService.postMessage(message);
+        URI uriBuilder = uriInfo.getAbsolutePathBuilder().path(String.valueOf(message1.getId())).build();
 
-    public Message postMessage(Message message){
-        return messageService.postMessage(message);
+        return  Response.created(uriBuilder). status(Response.Status.CREATED).entity(message1).build();
     }
 
     @PUT

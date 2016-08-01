@@ -1,6 +1,7 @@
 package org.shuhrat.testing.service;
 
 import org.shuhrat.testing.DateBaseClass;
+import org.shuhrat.testing.exception.NoDataException;
 import org.shuhrat.testing.model.Message;
 
 import java.time.LocalDate;
@@ -35,6 +36,10 @@ public class MessageService {
     }
 
     public Message getbyId(Long id){
+        Message message= messageMap.get(id);
+        if (message == null){
+            throw  new NoDataException("record " + id + " not found");
+        }
         return messageMap.get(id);
     }
 
