@@ -1,5 +1,6 @@
 package org.shuhrat.testing.resources;
 
+import org.shuhrat.testing.beans.MessageFilterBeans;
 import org.shuhrat.testing.model.Message;
 import org.shuhrat.testing.service.MessageService;
 
@@ -17,12 +18,12 @@ public class MessageResource {
     MessageService messageService= new MessageService();
 
     @GET
-    public List<Message> getIt(@QueryParam("year") int year , @QueryParam("start") int start, @QueryParam("recnum") int recnum) {
-        if (year>0){
-            return messageService.getAllbyYear(year);
+    public List<Message> getIt(@BeanParam MessageFilterBeans filterBeans) {
+        if (filterBeans.getYear()>0){
+            return messageService.getAllbyYear(filterBeans.getYear());
         }
-        if (start>=0 && recnum>0){
-            return messageService.getAllbyPagination(start, recnum);
+        if (filterBeans.getStart()>=0 && filterBeans.getRecnum()>0){
+            return messageService.getAllbyPagination(filterBeans.getStart(), filterBeans.getRecnum());
         }
 
         return messageService.getAll();
