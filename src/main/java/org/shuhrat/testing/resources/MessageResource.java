@@ -60,4 +60,8 @@ public class MessageResource {
         return messageService.putMessage(message);
     }
 
+    @Path("/{messid}/comments")
+    public CommentResource getCommentResource(){
+        return new CommentResource();
+    }
 }

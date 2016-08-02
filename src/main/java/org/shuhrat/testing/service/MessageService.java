@@ -2,6 +2,7 @@ package org.shuhrat.testing.service;
 
 import org.shuhrat.testing.DateBaseClass;
 import org.shuhrat.testing.exception.NoDataException;
+import org.shuhrat.testing.model.Comment;
 import org.shuhrat.testing.model.Message;
 
 import java.time.LocalDate;
@@ -19,6 +20,10 @@ public class MessageService {
             messageMap.put(1L, new Message(1, LocalDate.now() , "Paul", "Hello word"));
             messageMap.put(2L, new Message(2, LocalDate.now() , "Linda", "Hello Jersey"));
             messageMap.put(3L, new Message(3, LocalDate.now() , "Sasha", "Hello New Your"));
+
+            messageMap.get(1L).getComments().put(1L, new Comment(1, "Comment for message 1 ", LocalDate.now()));
+            messageMap.get(2L).getComments().put(1L, new Comment(1, "Comment for message 2 ", LocalDate.now()));
+
         }
     }
 

@@ -1,8 +1,11 @@
 package org.shuhrat.testing.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Admin on 28.07.2016.
@@ -16,6 +19,7 @@ public class Message implements Serializable {
     private LocalDate updated;
     private String author;
     private String text;
+    private Map<Long , Comment> comments= new HashMap<>();
 
     public Message(){
 
@@ -25,6 +29,7 @@ public class Message implements Serializable {
         this.create = LocalDate.now();
         this.author = author;
         this.text = text;
+
     }
 
     public LocalDate getUpdated() {
@@ -45,6 +50,15 @@ public class Message implements Serializable {
 
     public LocalDate getCreate() {
         return create;
+    }
+
+    @XmlTransient
+    public Map<Long, Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Map<Long, Comment> comments) {
+        this.comments = comments;
     }
 
     public void setCreate(LocalDate create) {
