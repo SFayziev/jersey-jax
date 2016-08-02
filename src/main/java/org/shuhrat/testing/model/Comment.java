@@ -12,7 +12,7 @@ public class Comment {
 
     private long id ;
     private String commentText;
-    private LocalDate creatdate;
+    private LocalDate creatdate=LocalDate.now();
 
     public Comment(long id,  String commentText, LocalDate creatdate) {
         this.id = id;
